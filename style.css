@@ -1,0 +1,1112 @@
+/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+.slicknav_menu{
+    display: none
+}
+
+/* SLIDER AREA============================================================= */
+
+html,body {
+    height:100%;
+    width:100%;
+    position:relative;
+}
+#background-carousel{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    position: absolute
+}
+.carousel,
+.carousel-inner {
+    width:100%;
+    height:100%;
+    z-index:0;
+    overflow:hidden;
+}
+.item {
+    width:100%;
+    height:100%;
+    background-position:center center;
+    background-size:cover;
+    z-index:0;
+}
+
+#content-wrapper {
+    position:absolute;
+    z-index:1 !important;
+    min-width:100%;
+    min-height:100%;
+}
+.well {
+    opacity:0.85
+}
+
+.title{ color:white; font-size:40px; }
+/* fonts================================================ */
+@import url('https://fonts.googleapis.com/css?family=Ravi+Prakash');
+/* SLIDER AREA============================================================= */
+.item{
+
+}
+.logo {
+    height: 105px;
+    width: 171px;
+    border-radius: 58%;
+}
+.item1{
+    background: url(img/slider1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.item2{
+    background: url(img/slider2.jpg);
+    background-repeat: no-repeat;
+    background-size:  cover;
+
+
+
+}
+.item3{
+    background: url(img/slider3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.item4{
+    background: url(img/slider4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.carousel {
+    position: relative;
+    z-index: -1;
+}
+.carousel:after {
+    position: absolute;
+    height: 658px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+
+    z-index: 1;
+    background-color: #002141;
+    opacity: 0.5;
+}
+
+.text-only p {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 113px;
+    font-weight: bold;
+    font-family: 'Ravi Prakash', cursive;
+    margin-bottom: 250px;
+}
+.nav li a{
+    font-family: 'Mate', serif;
+    color: #FFFFFF;
+    font-size: 20px;
+    text-transform: capitalize
+}
+/* .nav li a.active{
+background-color: transparent;
+} */
+.nav li a:hover{
+    background-color: transparent;
+
+}
+.collapse.navbar-collapse {
+    margin-top: 80px;
+}
+.collapse.navbar-collapse {
+    margin-top: 38px;
+}
+li a {
+    margin: 10px;
+    font-weight: bold;
+}
+.about-area img {
+    margin: 0 auto;
+    display: block;
+    height: 100px;
+    width: 200px;
+    border-radius: 50%;
+    border: 2px solid #1B548D;
+    margin-top: 75px;
+    transition: 1s
+}
+.about-area img:hover{
+    height: 100px;
+    width: 260px;
+}
+.about-area hr{
+    width: 200px;
+    color: #1B548D;
+    margin: auto
+}
+.about-text.text-center p {
+    font-size: 19px;
+    text-align: center;
+    color: #1A1E2E;
+}
+
+
+.btn.btn-block.btn-danger {
+    margin-bottom: 10px;
+}
+
+.blogShort{ border-bottom:1px solid #ddd;}
+.add{background: #333; padding: 10%; height: 300px;}
+
+
+.btn-blog {
+    color: #ffffff;
+    background-color: #000066;
+    border-color: #000066;
+    border-radius:0;
+    margin-bottom:10px
+}
+.btn-blog:hover,
+.btn-blog:focus,
+.btn-blog:active,
+.btn-blog.active,
+.open .dropdown-toggle.btn-blog {
+    color: white;
+    background-color:#34ca78;
+    border-color: #34ca78;
+}
+h2{color:#34ca78;}
+.margin10{margin-bottom:10px; margin-right:10px;}
+
+.blog-area img{
+    height: 200px;
+    width: 250px;
+
+}
+.blog-area{
+    background-color: rgba(155, 92, 232, 0.27);
+}
+.pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
+
+
+#about {
+    background-color: #002141;
+    opacity: 1.1;
+    color: chartreuse;
+}
+.heading-text {
+    color: azure;
+}
+.about-text.text-center p {
+    color: #34CA78;
+}
+#about a{
+    padding-bottom: 20px;
+
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+input[type="text"], input[type="password"] {
+    width: 1000px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.login button{
+    width: 1000px;
+}
+input[type="checkbox"]{
+    display: inline-block;
+}
+.login-foot {
+    width: 1063px;
+}
+
+.imgcontainer img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 1px solid #b3c7e1;
+}
+.nav.navbar-nav.navbar-right li a.up {
+    color: yellowgreen;
+
+    border-radius: 10px;
+    padding: 5px;
+}
+.nav.navbar-nav.navbar-right li a.low{
+    color: aqua;
+    padding: 1px 7px;
+    background: transparent;
+}
+.login b{
+    text-align: center;
+    color: #0d3349;
+}
+
+<!--   CONTACT         -->
+/*Contact sectiom*/
+.content-header{
+    font-family: 'Oleo Script', cursive;
+    color:#fcc500;
+    font-size: 45px;
+}
+
+.section-content{
+    text-align: center;
+
+}
+#contact{
+
+    font-family: 'Teko', sans-serif;
+    padding-top: 60px;
+    width: 100%;
+    width: 100vw;
+    height: 550px;
+    background: #3a6186; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color : #fff;
+    background-size: cover;
+
+}
+.contact-section{
+    padding-top: 40px;
+}
+.contact-section .col-md-6{
+    width: 50%;
+}
+
+.form-line{
+    border-right: 1px solid #B29999;
+}
+
+.form-group{
+    margin-top: 10px;
+}
+label{
+    font-size: 1.3em;
+    line-height: 1em;
+    font-weight: normal;
+}
+.form-control{
+    font-size: 1.3em;
+    color: #080808;
+}
+textarea.form-control {
+    height: 135px;
+    /* margin-top: px;*/
+}
+
+.submit{
+    font-size: 1.1em;
+    float: right;
+    width: 150px;
+    background-color: transparent;
+    color: #fff;
+
+}
+.form-control.yourname {
+    width: 539px;
+    padding: 7px;
+}
+
+
+
+/* FOOTER BUTTON=============================================================================================*/
+.div-decorator
+{
+
+}
+.div-heading
+{
+    border-bottom:1px dashed #5BC0DE;
+    padding-top:15px;
+    padding-bottom:15px;
+    margin:0px;
+    background-color:#F5F5F5;
+    border-radius:20px 20px 0px 0px;
+}
+.heading
+{
+    color:#5FC9E5;
+}
+.div-content
+{
+    padding:30px
+}
+.btn-circle
+{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+.btn-circle.btn-lg
+{
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+.btn-circle.btn-xl
+{
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}
+
+/* WRENCHING */
+@keyframes wrench {
+    0%{transform:rotate(-12deg)}
+    8%{transform:rotate(12deg)}
+    10%{transform:rotate(24deg)}
+    18%{transform:rotate(-24deg)}
+    20%{transform:rotate(-24deg)}
+    28%{transform:rotate(24deg)}
+    30%{transform:rotate(24deg)}
+    38%{transform:rotate(-24deg)}
+    40%{transform:rotate(-24deg)}
+    48%{transform:rotate(24deg)}
+    50%{transform:rotate(24deg)}
+    58%{transform:rotate(-24deg)}
+    60%{transform:rotate(-24deg)}
+    68%{transform:rotate(24deg)}
+    75%,100%{transform:rotate(0deg)}
+}
+.faa-wrench.animated,
+.faa-wrench.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-wrench {
+    animation: wrench 2.5s ease infinite;
+    transform-origin-x: 90%;
+    transform-origin-y: 35%;
+    transform-origin-z: initial;
+}
+.faa-wrench.animated.faa-fast,
+.faa-wrench.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-wrench.faa-fast {
+    animation: wrench 1.2s ease infinite;
+}
+.faa-wrench.animated.faa-slow,
+.faa-wrench.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-wrench.faa-slow {
+    animation: wrench 3.7s ease infinite;
+}
+
+/* BELL */
+@keyframes ring {
+    0%{transform:rotate(-15deg)}
+    2%{transform:rotate(15deg)}
+    4%{transform:rotate(-18deg)}
+    6%{transform:rotate(18deg)}
+    8%{transform:rotate(-22deg)}
+    10%{transform:rotate(22deg)}
+    12%{transform:rotate(-18deg)}
+    14%{transform:rotate(18deg)}
+    16%{transform:rotate(-12deg)}
+    18%{transform:rotate(12deg)}
+    20%,100%{transform:rotate(0deg)}
+}
+.faa-ring.animated,
+.faa-ring.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-ring {
+    animation: ring 2s ease infinite;
+    transform-origin-x: 50%;
+    transform-origin-y: 0px;
+    transform-origin-z: initial;
+}
+.faa-ring.animated.faa-fast,
+.faa-ring.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-ring.faa-fast {
+    animation: ring 1s ease infinite;
+}
+.faa-ring.animated.faa-slow,
+.faa-ring.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-ring.faa-slow {
+    animation: ring 3s ease infinite;
+}
+
+/* VERTICAL */
+@keyframes vertical {
+    0%{transform:translate(0,-3px)}
+    4%{transform:translate(0,3px)}
+    8%{transform:translate(0,-3px)}
+    12%{transform:translate(0,3px)}
+    16%{transform:translate(0,-3px)}
+    20%{transform:translate(0,3px)}
+    22%,100%{transform:translate(0,0)}
+}
+.faa-vertical.animated,
+.faa-vertical.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-vertical {
+    animation: vertical 2s ease infinite;
+}
+.faa-vertical.animated.faa-fast,
+.faa-vertical.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-vertical.faa-fast {
+    animation: vertical 1s ease infinite;
+}
+.faa-vertical.animated.faa-slow,
+.faa-vertical.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-vertical.faa-slow {
+    animation: vertical 4s ease infinite;
+}
+
+/* HORIZONTAL */
+@keyframes horizontal {
+    0%{transform:translate(0,0)}
+    6%{transform:translate(5px,0)}
+    12%{transform:translate(0,0)}
+    18%{transform:translate(5px,0)}
+    24%{transform:translate(0,0)}
+    30%{transform:translate(5px,0)}
+    36%,100%{transform:translate(0,0)}
+}
+.faa-horizontal.animated,
+.faa-horizontal.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal {
+    animation: horizontal 2s ease infinite;
+}
+.faa-horizontal.animated.faa-fast,
+.faa-horizontal.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal.faa-fast {
+    animation: horizontal 1s ease infinite;
+}
+.faa-horizontal.animated.faa-slow,
+.faa-horizontal.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal.faa-slow {
+    animation: horizontal 3s ease infinite;
+}
+
+/* FLASHING */
+@keyframes flash {
+    0%,100%,50%{opacity:1}
+    25%,75%{opacity:0}
+}
+.faa-flash.animated,
+.faa-flash.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-flash {
+    animation: flash 2s ease infinite;
+}
+.faa-flash.animated.faa-fast,
+.faa-flash.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-flash.faa-fast {
+    animation: flash 1s ease infinite;
+}
+.faa-flash.animated.faa-slow,
+.faa-flash.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-flash.faa-slow {
+    animation: flash 3s ease infinite;
+}
+
+/* BOUNCE */
+@keyframes bounce {
+    0%,10%,20%,50%,80%,100%{transform:translateY(0)}
+    40%{transform:translateY(-15px)}
+    60%{transform:translateY(-15px)}
+}
+.faa-bounce.animated,
+.faa-bounce.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-bounce {
+    animation: bounce 2s ease infinite;
+}
+.faa-bounce.animated.faa-fast,
+.faa-bounce.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-bounce.faa-fast {
+    animation: bounce 1s ease infinite;
+}
+.faa-bounce.animated.faa-slow,
+.faa-bounce.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-bounce.faa-slow {
+    animation: bounce 3s ease infinite;
+}
+
+/* SPIN */
+@keyframes spin{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(359deg)}
+}
+.faa-spin.animated,
+.faa-spin.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-spin {
+    animation: spin 1.5s linear infinite;
+}
+.faa-spin.animated.faa-fast,
+.faa-spin.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-spin.faa-fast {
+    animation: spin 0.7s linear infinite;
+}
+.faa-spin.animated.faa-slow,
+.faa-spin.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-spin.faa-slow {
+    animation: spin 2.2s linear infinite;
+}
+
+/* FLOAT */
+@keyframes float{
+    0%{transform: translateY(0)}
+    50%{transform: translateY(-6px)}
+    100%{transform: translateY(0)}
+}
+.faa-float.animated,
+.faa-float.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-float {
+    animation: float 2s linear infinite;
+}
+.faa-float.animated.faa-fast,
+.faa-float.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-float.faa-fast {
+    animation: float 1s linear infinite;
+}
+.faa-float.animated.faa-slow,
+.faa-float.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-float.faa-slow {
+    animation: float 3s linear infinite;
+}
+
+/* PULSE */
+@keyframes pulse {
+    0% {transform: scale(1.1)}
+    50% {transform: scale(0.8)}
+    100% {transform: scale(1.1)}
+}
+.faa-pulse.animated,
+.faa-pulse.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-pulse {
+    animation: pulse 2s linear infinite;
+}
+.faa-pulse.animated.faa-fast,
+.faa-pulse.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-pulse.faa-fast {
+    animation: pulse 1s linear infinite;
+}
+.faa-pulse.animated.faa-slow,
+.faa-pulse.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-pulse.faa-slow {
+    animation: pulse 3s linear infinite;
+}
+
+/* SHAKE */
+.faa-shake.animated,
+.faa-shake.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-shake {
+    animation: wrench 2.5s ease infinite;
+}
+.faa-shake.animated.faa-fast,
+.faa-shake.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-shake.faa-fast {
+    animation: wrench 1.2s ease infinite;
+}
+.faa-shake.animated.faa-slow,
+.faa-shake.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-shake.faa-slow {
+    animation: wrench 3.7s ease infinite;
+}
+
+/* TADA */
+@keyframes tada {
+    0% {transform: scale(1)}
+    10%,20% {transform:scale(.9) rotate(-8deg);}
+    30%,50%,70% {transform:scale(1.3) rotate(8deg)}
+    40%,60% {transform:scale(1.3) rotate(-8deg)}
+    80%,100% {transform:scale(1) rotate(0)}
+}
+
+.faa-tada.animated,
+.faa-tada.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-tada {
+    animation: tada 2s linear infinite;
+}
+.faa-tada.animated.faa-fast,
+.faa-tada.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-tada.faa-fast {
+    animation: tada 1s linear infinite;
+}
+.faa-tada.animated.faa-slow,
+.faa-tada.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-tada.faa-slow {
+    animation: tada 3s linear infinite;
+}
+
+/* PASSING */
+@keyframes passing {
+    0% {transform:translateX(-50%); opacity:0}
+    50% {transform:translateX(0%); opacity:1}
+    100% {transform:translateX(50%); opacity:0}
+}
+
+.faa-passing.animated,
+.faa-passing.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-passing {
+    animation: passing 2s linear infinite;
+}
+.faa-passing.animated.faa-fast,
+.faa-passing.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-passing.faa-fast {
+    animation: passing 1s linear infinite;
+}
+.faa-passing.animated.faa-slow,
+.faa-passing.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-passing.faa-slow {
+    animation: passing 3s linear infinite;
+}
+
+/* PASSING REVERSE */
+
+@keyframes passing-reverse {
+    0% {transform:translateX(50%); opacity:0}
+    50% {transform:translateX(0%); opacity:1}
+    100% {transform:translateX(-50%); opacity:0}
+}
+
+.faa-passing-reverse.animated,
+.faa-passing-reverse.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-passing-reverse {
+    animation: passing-reverse 2s linear infinite;
+}
+.faa-passing-reverse.animated.faa-fast,
+.faa-passing-reverse.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-passing-reverse.faa-fast {
+    animation: passing-reverse 1s linear infinite;
+}
+.faa-passing-reverse.animated.faa-slow,
+.faa-passing-reverse.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-passing-reverse.faa-slow {
+    animation: passing-reverse 3s linear infinite;
+}
+
+/* WAVE */
+@keyframes burst {
+    0% {opacity:.6}
+    50% {transform:scale(1.8);opacity:0}
+    100%{opacity:0}
+}
+.faa-burst.animated,
+.faa-burst.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-burst {
+    animation: burst 2s infinite linear
+}
+.faa-burst.animated.faa-fast,
+.faa-burst.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-burst.faa-fast {
+    animation: burst 1s infinite linear
+}
+.faa-burst.animated.faa-slow,
+.faa-burst.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-burst.faa-slow {
+    animation: burst 3s infinite linear
+}
+.div-content button {
+    margin-left: 90px;
+}
+.div-content button.air {
+    background-color: lightcoral;
+}
