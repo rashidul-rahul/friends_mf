@@ -1,8 +1,9 @@
 <?php
 $db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `loans`";
+$query ="SELECT * FROM `accounts` WHERE id=".$_GET['id'];
+//echo $query;
 $stmt = $db->query($query);
-$loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$account = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -112,20 +113,19 @@ $loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="grid_10">
 
         <div class="box round first grid">
-            <h2> Edit Loan</h2>
+            <h2> Edit Account</h2>
             <div class="block">
-                <form action="loanLoad.php" method="get">
-               <label for="list">Select Loan Id:</label>
-                <select name="id" id="list">
-                    <?php
-                    foreach ($loans as $loan) {
-                        ?>
-                        <option value="<?=$loan['id']?>"><?=$loan['name']?></option>
-                        <?php
-                    }
-                    ?>
-                </select>
-                    <br/><button class="btn btn-default" type="submit">Next</button>
+                <form action="accountUpdate.php" method="post">
+                    <input value="<?=$account[0]['id']?>" name="id" type="hidden">
+                    <div class="form-group">
+                        <label for="account_no">Account NO: </label>
+                        <input class="form-control" type="text" id="account_no" name="account_no" value="<?=$account[0]['account_no']?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="total_money">Total Money: </label>
+                        <input class="form-control" type="text" id="total_money" name="total_money" value="<?=$account[0]['total_money']?>">
+                    </div>
+                    <button  type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>
         </div>
@@ -143,3 +143,4 @@ $loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 </body>
 </html>
+

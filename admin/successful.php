@@ -1,10 +1,3 @@
-<?php
-$db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `loans`";
-$stmt = $db->query($query);
-$loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +80,6 @@ $loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <ul class="submenu">
                             <li><a href="allCustomers.php">All Customers</a></li>
                             <li><a href="addCustomer.php">Add Customers</a></li>
-
                         </ul>
                     </li>
 
@@ -112,27 +104,14 @@ $loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="grid_10">
 
         <div class="box round first grid">
-            <h2> Edit Loan</h2>
+            <h2> Successful</h2>
             <div class="block">
-                <form action="loanLoad.php" method="get">
-               <label for="list">Select Loan Id:</label>
-                <select name="id" id="list">
-                    <?php
-                    foreach ($loans as $loan) {
-                        ?>
-                        <option value="<?=$loan['id']?>"><?=$loan['name']?></option>
-                        <?php
-                    }
-                    ?>
-                </select>
-                    <br/><button class="btn btn-default" type="submit">Next</button>
-                </form>
+                Account Create SuccessFul
             </div>
         </div>
     </div>
-</div>
-<div class="clear">
-</div>
+    <div class="clear">
+    </div>
 </div>
 <div class="clear">
 </div>

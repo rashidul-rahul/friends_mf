@@ -80,8 +80,6 @@
                         <ul class="submenu">
                             <li><a href="allCustomers.php">All Customers</a></li>
                             <li><a href="addCustomer.php">Add Customers</a></li>
-                            <li><a href="editCustomer.php">Edit Customers</a></li>
-
                         </ul>
                     </li>
 

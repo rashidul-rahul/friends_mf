@@ -1,10 +1,23 @@
 <?php
 $db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `accounts` WHERE id = ".$_GET['id']."";
+$query ="SELECT * FROM `customers` WHERE id = ".$_GET['id']."";
 //echo $query;
 $stmt = $db->query($query);
+$customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//print_r($customer);
+$query ="SELECT * FROM `nominees` WHERE customer_id = ".$customer[0]['id']."";
+$stmt = $db->query($query);
+$nominee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//print_r($nominee);
+$query ="SELECT * FROM `accounts` WHERE customer_id = ".$customer[0]['id']."";
+$stmt = $db->query($query);
 $account = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$query ="SELECT * FROM `map_account_loans` LEFT JOIN loans ON map_account_loans.loans_id = loans.id WHERE accounts_id=".$account[0]['id']."";
+$stmt = $db->query($query);
+$loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +100,6 @@ $account = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <ul class="submenu">
                             <li><a href="allCustomers.php">All Customers</a></li>
                             <li><a href="addCustomer.php">Add Customers</a></li>
-
                         </ul>
                     </li>
 
@@ -112,7 +124,99 @@ $account = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="grid_10">
 
         <div class="box round first grid">
-            <h2> View Account</h2>
+            <h2> Customer Information</h2>
+            <div class="block">
+                <table>
+                    <tr>
+                        <td>Customer Name:</td>
+                        <td><?=$customer[0]['first_name']." ".$customer[0]['last_name']?></td>
+                    </tr>
+                    <tr>
+                        <td>User Name:</td>
+                        <td><?=$customer[0]['user_name'];?></td>
+                    </tr>
+                    <tr>
+                        <td>Father's Name:</td>
+                        <td><?=$customer[0]['father_name'];?></td>
+                    </tr>
+                    <tr>
+                        <td>Mother's Name:</td>
+                        <td><?=$customer[0]['mother_name'];?></td>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td>
+                        <td><?=$customer[0]['gender'];?></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth:</td>
+                        <td><?=$customer[0]['date_birth'];?></td>
+                    </tr>
+                    <tr>
+                        <td>National ID No:</td>
+                        <td><?=$customer[0]['nid'];?></td>
+                    </tr>
+                    <tr>
+                        <td>Address:</td>
+                        <td><?=$customer[0]['address'];?></td>
+                    </tr>
+                    <tr>
+                        <td>Contact number:</td>
+                        <td><?=$customer[0]['contact'];?></td>
+                    </tr>
+                    <tr>
+                        <td>Mail Address:</td>
+                        <td><?=$customer[0]['mail'];?></td>
+                    </tr>
+                </table>
+                <div>
+                    <a href="editCustomer.php?id=<?=$customer[0]['id']?>">Edit Customer Information</a>
+                </div>
+            </div>
+        </div>
+            <div class="box round first grid">
+                <h2> Nominee Information</h2>
+                <div class="block">
+                    <table>
+                        <tr>
+                            <td>Niminee Name:</td>
+                            <td><?=$nominee[0]['first_name']." ".$nominee[0]['last_name']?></td>
+                        </tr>
+                        <tr>
+                            <td>Father's Name:</td>
+                            <td><?=$nominee[0]['father_name'];?></td>
+                        </tr>
+                        <tr>
+                            <td>Mother's Name:</td>
+                            <td><?=$nominee[0]['mothers_name'];?></td>
+                        </tr>
+                        <tr>
+                            <td>Gender:</td>
+                            <td><?=$nominee[0]['gender'];?></td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth:</td>
+                            <td><?=$nominee[0]['date_birth'];?></td>
+                        </tr>
+                        <tr>
+                            <td>National ID No:</td>
+                            <td><?=$nominee[0]['nid'];?></td>
+                        </tr>
+                        <tr>
+                            <td>Relation:</td>
+                            <td><?=$nominee[0]['relation_customer'];?></td>
+                        </tr>
+                        <tr>
+                            <td>Contact number:</td>
+                            <td><?=$nominee[0]['contact'];?></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <a href="editNominee.php?id=<?=$nominee[0]['id']?>">Edit Nominee Information</a>
+                    </div>
+                </div>
+        </div>
+        <div class="box round first grid">
+            <h2> Account Information</h2>
             <div class="block">
                 <table>
                     <tr>
@@ -124,6 +228,20 @@ $account = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?=$account[0]['total_money'];?></td>
                     </tr>
 
+                </table>
+                <div>
+                    <a href="loadAccount.php?id=<?=$account[0]['id']?>">Edit Account Information</a>
+                </div>
+            </div>
+        </div>
+        <div class="box round first grid">
+            <h2> Active Loan</h2>
+            <div class="block">
+                <table>
+                    <tr>
+                        <td>Loan Name:</td>
+                        <td><?=$loan[0]['name']?></td>
+                    </tr>
                 </table>
             </div>
         </div>

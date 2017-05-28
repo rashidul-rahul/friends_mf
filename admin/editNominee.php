@@ -1,8 +1,8 @@
 <?php
 $db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `loans`";
+$query ="SELECT * FROM `nominees` WHERE id=".$_GET['id'];
 $stmt = $db->query($query);
-$loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$nominee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -112,20 +112,48 @@ $loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="grid_10">
 
         <div class="box round first grid">
-            <h2> Edit Loan</h2>
+            <h2> Edit Nomiee</h2>
             <div class="block">
-                <form action="loanLoad.php" method="get">
-               <label for="list">Select Loan Id:</label>
-                <select name="id" id="list">
-                    <?php
-                    foreach ($loans as $loan) {
-                        ?>
-                        <option value="<?=$loan['id']?>"><?=$loan['name']?></option>
-                        <?php
-                    }
-                    ?>
-                </select>
-                    <br/><button class="btn btn-default" type="submit">Next</button>
+                <form action="updateNominee.php" method="post">
+                    <input value="<?=$nominee[0]['id']?>" name="id" type="hidden">
+                    <input value="<?=$nominee[0]['customer_id']?>" name="customer_id" type="hidden">
+                    <div class="form-group">
+                        <label for="first_name">First Name: </label>
+                        <input class="form-control" type="text" id="first_name" name="first_name" value="<?=$nominee[0]['first_name']?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name: </label>
+                        <input class="form-control" type="text" id="last_name" name="last_name" value="<?=$nominee[0]['last_name']?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="father_name">Fathers Name: </label>
+                        <input class="form-control" type="text" id="father_name" name="father_name" value="<?=$nominee[0]['father_name']?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="mothers_name">Mothers Name: </label>
+                        <input class="form-control" type="text" id="mothers_name" name="mothers_name" value="<?=$nominee[0]['mothers_name']?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender: </label>
+                        <input class="form-control" type="text" id="gender" name="gender" value="<?=$nominee[0]['gender']?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="relation_customer">Relation Between Customer: </label>
+                        <input class="form-control" type="text" id="relation_customer" name="relation_customer" value="<?=$nominee[0]['relation_customer']?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date Of Birth: </label>
+                        <input class="form-control" type="text" id="dob" name="dob" value="<?=$nominee[0]['date_birth']?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="nid">National ID Card: </label>
+                        <input class="form-control" type="text" id="nid" name="nid" value="<?=$nominee[0]['nid']?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact_number: </label>
+                        <input class="form-control" type="text" id="contact" name="contact" value="<?=$nominee[0]['contact']?>">
+                    </div>
+                    <button  type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>
         </div>
@@ -143,3 +171,4 @@ $loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 </body>
 </html>
+
