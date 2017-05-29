@@ -1,9 +1,21 @@
 <?php
+$wrong = 1;
 $db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `loans` WHERE id=".$_GET['id'];
+$query = "SELECT * FROM `accounts` WHERE accounts.customer_id = ".$_POST['customer_id'];
+//echo $query;
 $stmt = $db->query($query);
-$loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$account = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$total_money = $account[0]['total_money']- $_POST['inputAmount'];
+//echo $total_money;
+$query ="UPDATE `accounts` SET `total_money` = '".$total_money."' WHERE `accounts`.`customer_id` = ".$_POST['customer_id'];
+$stmt = $db->exec($query);
+if ($stmt){
+    $wrong = 0;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -87,7 +99,6 @@ $loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <ul class="submenu">
                             <li><a href="allCustomers.php">All Customers</a></li>
                             <li><a href="addCustomer.php">Add Customers</a></li>
-
                         </ul>
                     </li>
 
@@ -112,42 +123,20 @@ $loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="grid_10">
 
         <div class="box round first grid">
-            <h2> Edit Loan</h2>
+            <h2> Deposit</h2>
             <div class="block">
-                <form action="updateLoan.php" method="post">
-                    <input value="<?=$loan[0]['id']?>" name="id" type="hidden">
-                    <div class="form-group">
-                        <label for="name">Loan Name: </label>
-                        <input class="form-control" type="text" id="name" name="name" value="<?=$loan[0]['name']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">Amount: </label>
-                        <input class="form-control" type="text" id="amount" name="amount" value="<?=$loan[0]['amount']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="interest">Interest: </label>
-                        <input class="form-control" type="text" id="interest" name="interest" value="<?=$loan[0]['interest']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="duration">Duration: </label>
-                        <input class="form-control" type="text" id="duration" name="duration" value="<?=$loan[0]['duration']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="loan_id">Loan ID: </label>
-                        <input class="form-control" type="text" id="loan_id" name="loan_id" value="<?=$loan[0]['loan_id']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="details">Details: </label>
-                        <input class="form-control" type="text" id="details" name="details" value="<?=$loan[0]['details']?>">
-                    </div>
-                    <button  type="submit" class="btn btn-default">Submit</button>
-                </form>
+                <?php
+                if ($wrong == 1){
+                    echo "Withdraw Error";
+                }elseif($wrong == 0){
+                    echo "Withdraw SuccessFul";
+                }
+                ?>
             </div>
         </div>
     </div>
-</div>
-<div class="clear">
-</div>
+    <div class="clear">
+    </div>
 </div>
 <div class="clear">
 </div>

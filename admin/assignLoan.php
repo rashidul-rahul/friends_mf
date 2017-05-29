@@ -129,7 +129,7 @@ $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         }
                         ?>
                     </select></br>
-                    <label for="list">Select Loan Id:</label>
+                    <label for="list">Select Account Id:</label>
                     <select name="account" id="list">
                         <?php
                         foreach ($accounts as $account) {

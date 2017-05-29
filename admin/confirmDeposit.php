@@ -1,10 +1,26 @@
 <?php
+$wrong = 1;
 $db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `loans` WHERE id=".$_GET['id'];
+$query ="SELECT * FROM `accounts`";
 $stmt = $db->query($query);
-$loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
+//echo $query;
+$accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+foreach ($accounts as $account){
+    if ($account['account_no'] == $_POST['account_number']){
+        $query= "SELECT * FROM `accounts` LEFT JOIN customers ON accounts.customer_id = customers.id WHERE accounts.account_no = ".$account['account_no'];
+        $stmt = $db->query($query);
+        $accountAndCustomer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $wrong = 0;
+//        echo 'ok';
+        break;
+    }
+//    echo $_POST['account_number'].' and '.$account['account_no'];
+//    echo "<br/>";
+}
 
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +103,6 @@ $loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <ul class="submenu">
                             <li><a href="allCustomers.php">All Customers</a></li>
                             <li><a href="addCustomer.php">Add Customers</a></li>
-
                         </ul>
                     </li>
 
@@ -112,42 +127,46 @@ $loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="grid_10">
 
         <div class="box round first grid">
-            <h2> Edit Loan</h2>
+            <h2> Check Deposit</h2>
             <div class="block">
-                <form action="updateLoan.php" method="post">
-                    <input value="<?=$loan[0]['id']?>" name="id" type="hidden">
-                    <div class="form-group">
-                        <label for="name">Loan Name: </label>
-                        <input class="form-control" type="text" id="name" name="name" value="<?=$loan[0]['name']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">Amount: </label>
-                        <input class="form-control" type="text" id="amount" name="amount" value="<?=$loan[0]['amount']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="interest">Interest: </label>
-                        <input class="form-control" type="text" id="interest" name="interest" value="<?=$loan[0]['interest']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="duration">Duration: </label>
-                        <input class="form-control" type="text" id="duration" name="duration" value="<?=$loan[0]['duration']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="loan_id">Loan ID: </label>
-                        <input class="form-control" type="text" id="loan_id" name="loan_id" value="<?=$loan[0]['loan_id']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="details">Details: </label>
-                        <input class="form-control" type="text" id="details" name="details" value="<?=$loan[0]['details']?>">
-                    </div>
-                    <button  type="submit" class="btn btn-default">Submit</button>
-                </form>
+                <?php
+                    if ($wrong==1){
+                        echo "Can't Find The Account Number<br/>";
+                        echo "<a href='deposit.php'>Go Back</a>";
+                    }else {
+                        ?>
+                        Account Holder Name : <?= $accountAndCustomer[0]['first_name'] . ' ' . $accountAndCustomer[0]['last_name'] ?>
+                        <br/>
+                        <br/>
+                        Account Number : <?= $accountAndCustomer[0]['account_no'] ?>
+                        <br/>
+                        <br/>
+                        Total Money : <?= $accountAndCustomer[0]['total_money'] ?>
+                        <br/>
+                        <br/>
+
+                        <form action="updateMoney.php" method="post">
+                            <input name="customer_id" type="hidden"
+                                   value="<?= $accountAndCustomer[0]['customer_id'] ?>">
+                            <div class="form-group">
+                                <label for="inputAmount">Enter Amount:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">BDT</div>
+                                    <input type="text" class="form-control" id="inputAmount" name="inputAmount"
+                                           placeholder="Amount">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Deposit</button>
+                        </form>
+                        <?php
+                    }
+                ?>
             </div>
         </div>
     </div>
-</div>
-<div class="clear">
-</div>
+    <div class="clear">
+    </div>
 </div>
 <div class="clear">
 </div>

@@ -73,7 +73,7 @@ $loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <li class="ic-typography"><a href="addLoans.php">Add Loan</a></li>
             <li class="ic-typography"><a href="deposit.php">Deposit</a></li>
             <li class="ic-typography"><a href="withdraw.php">Withdraw</a></li>
-            <li class="ic-typography"><a href="assignLoan.php>"><span>Assign Loan</span></a> </li>
+            <li class="ic-typography"><a href="assignLoan.php"><span>Assign Loan</span></a> </li>
             <li class="ic-typography"><a href="changepassword.php"><span>Change Password</span></a></li>
         </ul>
     </div>
