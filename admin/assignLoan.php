@@ -1,12 +1,20 @@
 <?php
-$db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `loans`";
-$stmt = $db->query($query);
-$loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+session_start();
 
-$query ="SELECT * FROM `accounts`";
-$stmt = $db->query($query);
-$accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if(isset($_SESSION['login']) && $_SESSION == true) {
+    $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
+    $query = "SELECT * FROM `loans`";
+    $stmt = $db->query($query);
+    $loans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $query = "SELECT * FROM `accounts`";
+    $stmt = $db->query($query);
+    $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $query = null;
+    $db = null;
+}else{
+    header("Location: loginRedirect.php");
+}
 ?>
 
 

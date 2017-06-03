@@ -1,9 +1,16 @@
 ﻿<?php
+session_start();
+if(empty(isset($_SESSION['login'])) && $_SESSION['login'] == true) {
 $db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
 $query = "SELECT * FROM `customers` WHERE id=".$_GET['id'];
 //echo $query;
 $stmt = $db->query($query);
+$db = null;
+$query = null;
 $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}else{
+    header("Location: loginRedirect.php");
+}
 ?>
 
 <!DOCTYPE html>

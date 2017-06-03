@@ -1,13 +1,20 @@
 <?php
-$db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query = "SELECT * FROM `nominees` WHERE customer_id=".$_GET['id'];
+session_start();
+if(isset($_SESSION['login']) && $_SESSION == true){
+    $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
+    $query = "SELECT * FROM `nominees` WHERE customer_id=" . $_GET['id'];
 //echo $query;
-$stmt = $db->query($query);
-$nominee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $db->query($query);
+    $nominee = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$query = "SELECT * FROM `customers` WHERE id =".$_GET['id'];
-$stmt = $db->query($query);
-$customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $query = "SELECT * FROM `customers` WHERE id =" . $_GET['id'];
+    $stmt = $db->query($query);
+    $db =null;
+    $query = null;
+    $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}else{
+    header("Location: loginRedirect.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,7 +65,7 @@ $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="floatleft marginleft10">
                     <ul class="inline-ul floatleft">
                         <li>Hello <?=$customer[0]['first_name']?></li>
-                        <li><a href="../admin/logout.php">Logout</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </div>
             </div>

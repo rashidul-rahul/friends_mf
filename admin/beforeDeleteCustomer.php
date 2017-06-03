@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+
+if(!isset($_SESSION['login']) && $_SESSION != true) {
+    header("Location: loginRedirect.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

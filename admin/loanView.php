@@ -1,8 +1,17 @@
 <?php
-$db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `loans` WHERE id=".$_GET['id'];
-$stmt = $db->query($query);
-$loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
+session_start();
+
+if(isset($_SESSION['login']) && $_SESSION == true) {
+    $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
+    $query = "SELECT * FROM `loans` WHERE id=" . $_GET['id'];
+    $stmt = $db->query($query);
+    $loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $query = null;
+    $db = null;
+}
+else{
+    header("Location: loginRedirect.php");
+}
 ?>
 
 <!DOCTYPE html>

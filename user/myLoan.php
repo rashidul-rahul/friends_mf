@@ -1,13 +1,21 @@
 <?php
+session_start();
+if(isset($_SESSION['login']) && $_SESSION == true){
 $db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
 $query = "SELECT  loans.name, loans.amount, loans.interest, loans.duration, loans.loan_id, loans.details FROM `customers` LEFT JOIN accounts ON customers.id = accounts.customer_id LEFT JOIN map_account_loans ON accounts.id = map_account_loans.accounts_id LEFT JOIN loans ON map_account_loans.loans_id = loans.id WHERE customers.id =".$_GET['id'];
 //echo $query;
 $stmt = $db->query($query);
 $loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$query = "SELECT * FROM `customers` WHERE id =".$_GET['id'];
+$query = "SELECT * FROM `customers` WHERE id =".$_SESSION['id'];
 $stmt = $db->query($query);
+
+$db =null;
+$query =null;
 $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}else{
+    header("Location: loginRedirect.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +67,7 @@ $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="floatleft marginleft10">
                     <ul class="inline-ul floatleft">
                         <li>Hello <?=$customer[0]['first_name']?></li>
-                        <li><a href="../admin/logout.php">Logout</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </div>
             </div>

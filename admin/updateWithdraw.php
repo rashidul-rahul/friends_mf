@@ -1,18 +1,26 @@
 <?php
-$wrong = 1;
-$db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query = "SELECT * FROM `accounts` WHERE accounts.customer_id = ".$_POST['customer_id'];
+session_start();
+
+if(isset($_SESSION['login']) && $_SESSION == true) {
+    $wrong = 1;
+    $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
+    $query = "SELECT * FROM `accounts` WHERE accounts.customer_id = " . $_POST['customer_id'];
 //echo $query;
-$stmt = $db->query($query);
-$account = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $db->query($query);
+    $account = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$total_money = $account[0]['total_money']- $_POST['inputAmount'];
+    $total_money = $account[0]['total_money'] - $_POST['inputAmount'];
 //echo $total_money;
-$query ="UPDATE `accounts` SET `total_money` = '".$total_money."' WHERE `accounts`.`customer_id` = ".$_POST['customer_id'];
-$stmt = $db->exec($query);
-if ($stmt){
-    $wrong = 0;
+    $query = "UPDATE `accounts` SET `total_money` = '" . $total_money . "' WHERE `accounts`.`customer_id` = " . $_POST['customer_id'];
+    $stmt = $db->exec($query);
+    $query = null;
+    $db = null;
+    if ($stmt) {
+        $wrong = 0;
+    }
+} else{
+    header("Location: loginRedirect.php");
 }
 ?>
 

@@ -1,21 +1,29 @@
 <?php
-$wrong = 1;
-$db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `accounts`";
-$stmt = $db->query($query);
+session_start();
+
+if(isset($_SESSION['login']) && $_SESSION == true) {
+    $wrong = 1;
+    $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
+    $query = "SELECT * FROM `accounts`";
+    $stmt = $db->query($query);
 //echo $query;
-$accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-foreach ($accounts as $account){
-    if ($account['account_no'] == $_POST['account_number']){
-        $query= "SELECT * FROM `accounts` LEFT JOIN customers ON accounts.customer_id = customers.id WHERE accounts.account_no = ".$account['account_no'];
-        $stmt = $db->query($query);
-        $accountAndCustomer = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $wrong = 0;
+    $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($accounts as $account) {
+        if ($account['account_no'] == $_POST['account_number']) {
+            $query = "SELECT * FROM `accounts` LEFT JOIN customers ON accounts.customer_id = customers.id WHERE accounts.account_no = " . $account['account_no'];
+            $stmt = $db->query($query);
+            $accountAndCustomer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $wrong = 0;
 //        echo 'ok';
-        break;
-    }
+            break;
+        }
 //    echo $_POST['account_number'].' and '.$account['account_no'];
 //    echo "<br/>";
+    }
+    $query = null;
+    $db = null;
+} else{
+    header("Location: loginRedirect.php");
 }
 
 

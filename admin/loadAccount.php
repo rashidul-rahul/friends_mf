@@ -1,9 +1,17 @@
 <?php
-$db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
-$query ="SELECT * FROM `accounts` WHERE id=".$_GET['id'];
+session_start();
+
+if(isset($_SESSION['login']) && $_SESSION == true) {
+    $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
+    $query = "SELECT * FROM `accounts` WHERE id=" . $_GET['id'];
 //echo $query;
-$stmt = $db->query($query);
-$account = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $db->query($query);
+    $account = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $query = null;
+    $db = null;
+} else{
+    header("Location: loginRedirect.php");
+}
 ?>
 
 <!DOCTYPE html>
