@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['login']) && $_SESSION == true) {
+if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin') {
     $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
     $query = "SELECT * FROM `customers` WHERE id=" . $_GET['id'];
     $stmt = $db->query($query);

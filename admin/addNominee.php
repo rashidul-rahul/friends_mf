@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['login']) && $_SESSION == true) {
+if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin') {
     $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
     $query = "SELECT * FROM `customers` WHERE id = " . $_GET['id'];
     $stmt = $db->query($query);
@@ -122,7 +122,7 @@ if(isset($_SESSION['login']) && $_SESSION == true) {
         <div class="box round first grid">
             <h2> Nominee Information For <?=$customer[0]['first_name'].' '.$customer[0]['last_name']?></h2>
             <div class="block">
-                <form action="nomineeCreate.php" method="post">
+                <form action="nomineeCreate.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="customer_id" value="<?=$customer[0]['id']?>">
                     <div class="form-group">
                         <label for="first_name">First Name: </label>
@@ -160,6 +160,10 @@ if(isset($_SESSION['login']) && $_SESSION == true) {
                     <div class="form-group">
                         <label for="relation">Relation With Customer: </label>
                         <input class="form-control" type="text" id="relation" name="relation" placeholder="Relation">
+                    </div>
+                    <div class="form-group">
+                        <lable for="upload">Upload Photo:</lable>
+                        <input type="file" name="upload" id="upload">
                     </div>
                     <button  type="submit" class="btn btn-default">Next</button>
                 </form>

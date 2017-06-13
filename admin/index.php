@@ -1,8 +1,8 @@
 ﻿<?php
 session_start();
+if (isset($_SESSION['login']) && $_SESSION['login'] == 'admin'){
 
-
-if(!isset($_SESSION['login']) && $_SESSION != true) {
+} else{
     header("Location: loginRedirect.php");
 }
 ?>

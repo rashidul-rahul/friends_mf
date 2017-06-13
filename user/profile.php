@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['login']) && $_SESSION == true){
+if(isset($_SESSION['login']) && $_SESSION['login'] == 'user'){
     $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
     $query = "SELECT * FROM `customers` WHERE id=" . $_GET['id'];
 //echo $query;
@@ -58,7 +58,7 @@ if(isset($_SESSION['login']) && $_SESSION == true){
             </div>
             <div class="floatright">
                 <div class="floatleft">
-                    <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
+                    <img src="<?=$customer[0]['image']?>" alt="Profile Pic"  style="width: 27px; height: 27px;"/></div>
                 <div class="floatleft marginleft10">
                     <ul class="inline-ul floatleft">
                         <li>Hello <?=$customer[0]['first_name']?></li>
@@ -113,6 +113,14 @@ if(isset($_SESSION['login']) && $_SESSION == true){
             <h2> Profile</h2>
             <div class="block">
                 <table>
+                    <tr>
+                        <td><img src="<?=$customer[0]['image']?>" style="height: 200px; width: 200px"></td>
+
+                    </tr>
+                    <tr>
+                        <td><h2>  </h2></td>
+
+                    </tr>
                     <tr>
                         <td>Customer Name</td>
                         <td>: <?=$customer[0]['first_name']." ".$customer[0]['last_name']?></td>

@@ -1,13 +1,13 @@
 <?php
 session_start();
-if(isset($_SESSION['login']) && $_SESSION == true){
+if(isset($_SESSION['login']) && $_SESSION['login'] == 'user'){
 $db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
 $query = "SELECT  loans.name, loans.amount, loans.interest, loans.duration, loans.loan_id, loans.details FROM `customers` LEFT JOIN accounts ON customers.id = accounts.customer_id LEFT JOIN map_account_loans ON accounts.id = map_account_loans.accounts_id LEFT JOIN loans ON map_account_loans.loans_id = loans.id WHERE customers.id =".$_GET['id'];
 //echo $query;
 $stmt = $db->query($query);
 $loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$query = "SELECT * FROM `customers` WHERE id =".$_SESSION['id'];
+$query = "SELECT * FROM `customers` WHERE id =".$_SESSION['customer_id'];
 $stmt = $db->query($query);
 
 $db =null;
@@ -63,7 +63,7 @@ $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="floatright">
                 <div class="floatleft">
-                    <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
+                    <img src="<?=$customer[0]['image']?>" alt="Profile Pic"  style="width: 27px; height: 27px;"/></div>
                 <div class="floatleft marginleft10">
                     <ul class="inline-ul floatleft">
                         <li>Hello <?=$customer[0]['first_name']?></li>
@@ -117,28 +117,36 @@ $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="box round first grid">
             <h2> My Loan</h2>
             <div class="block">
-                <table>
-                    <tr>
-                        <td>Loan Name</td>
-                        <td>: <?=$loan[0]['name']?></td>
-                    </tr>
-                    <tr>
-                        <td>Loan ID:</td>
-                        <td>: <?=$loan[0]['loan_id']?></td>
-                    </tr>
-                    <tr>
-                        <td>Loan Amount:</td>
-                        <td>: <?=$loan[0]['amount']?></td>
-                    </tr>
-                    <tr>
-                        <td>Loan Interest:</td>
-                        <td>: <?=$loan[0]['interest']?>%</td>
-                    </tr>
-                    <tr>
-                        <td>Loan Details:</td>
-                        <td>: <?=$loan[0]['details']?></td>
-                    </tr>
-                </table>
+                <?php
+                if (empty($loan[0]['name'])){
+                    echo 'No Loan Assign';
+                }else {
+                    ?>
+                    <table>
+                        <tr>
+                            <td>Loan Name</td>
+                            <td>: <?= $loan[0]['name'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Loan ID:</td>
+                            <td>: <?= $loan[0]['loan_id'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Loan Amount:</td>
+                            <td>: <?= $loan[0]['amount'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Loan Interest:</td>
+                            <td>: <?= $loan[0]['interest'] ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Loan Details:</td>
+                            <td>: <?= $loan[0]['details'] ?></td>
+                        </tr>
+                    </table>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>

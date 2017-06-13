@@ -1,6 +1,6 @@
 ﻿<?php
 session_start();
-if(empty(isset($_SESSION['login'])) && $_SESSION['login'] == true) {
+if(isset($_SESSION['login']) && $_SESSION['login'] == 'user') {
 $db = new PDO("mysql:hostname=localhost;dbname=friends_mf","root","");
 $query = "SELECT * FROM `customers` WHERE id=".$_GET['id'];
 //echo $query;
@@ -58,7 +58,7 @@ $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="floatright">
                 <div class="floatleft">
-                    <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
+                    <img src="<?=$customer[0]['image']?>" alt="Profile Pic"  style="width: 27px; height: 27px;"/></div>
                 <div class="floatleft marginleft10">
                     <ul class="inline-ul floatleft">
                         <li>Hello <?=$customer[0]['first_name']?></li>
@@ -110,7 +110,7 @@ $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="grid_10">
 
         <div class="box round first grid">
-            <h2> Dashbord</h2>
+            <h2> Change Password</h2>
             <div class="block">
                 <form action="change.php?id=<?=$customer[0]['id']?>" method="post">
                     <table class="form">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['login']) && $_SESSION == true) {
+if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin') {
     if ($_POST['confirm'] == "ok") {
         $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
         $query = "DELETE FROM `customers` WHERE `customers`.`id` = " . $_POST['id'] . "";

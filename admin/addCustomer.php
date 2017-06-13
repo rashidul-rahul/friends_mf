@@ -2,7 +2,9 @@
 session_start();
 
 
-if(!isset($_SESSION['login']) && $_SESSION != true) {
+if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin') {
+
+}else{
     header("Location: loginRedirect.php");
 }
 
@@ -115,7 +117,7 @@ if(!isset($_SESSION['login']) && $_SESSION != true) {
         <div class="box round first grid">
             <h2> Add Customer</h2>
             <div class="block">
-                <form action="customerCreate.php" method="post">
+                <form action="customerCreate.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="first_name">First Name: </label>
                         <input class="form-control" type="text" id="first_name" name="first_name" placeholder="First Name">
@@ -164,6 +166,10 @@ if(!isset($_SESSION['login']) && $_SESSION != true) {
                     <div class="form-group">
                         <label for="password">Password: </label>
                         <input class="form-control" type="text" id="password" name="password" placeholder="*******">
+                    </div>
+                    <div class="form-group">
+                        <lable for="upload">Upload Photo:</lable>
+                        <input type="file" name="upload" id="upload">
                     </div>
                     <button  type="submit" class="btn btn-default">Next</button>
                 </form>

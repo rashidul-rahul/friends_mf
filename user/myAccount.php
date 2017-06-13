@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['login']) && $_SESSION == true){
+if(isset($_SESSION['login']) && $_SESSION['login'] == 'user'){
     $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
     $query = "SELECT * FROM `accounts` WHERE customer_id = " . $_GET['id'] . "";
 //echo $query;
@@ -63,7 +63,7 @@ if(isset($_SESSION['login']) && $_SESSION == true){
             </div>
             <div class="floatright">
                 <div class="floatleft">
-                    <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
+                    <img src="<?=$customer[0]['image']?>" alt="Profile Pic"  style="width: 27px; height: 27px;"/></div>
                 <div class="floatleft marginleft10">
                     <ul class="inline-ul floatleft">
                         <li>Hello <?=$customer[0]['first_name']?></li>

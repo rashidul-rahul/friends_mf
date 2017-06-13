@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['login']) && $_SESSION == true) {
+if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin') {
     $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
     $query = "SELECT * FROM `customers` WHERE id = " . $_GET['id'] . "";
 //echo $query;
@@ -136,6 +136,12 @@ if(isset($_SESSION['login']) && $_SESSION == true) {
             <div class="block">
                 <table>
                     <tr>
+                        <td><img src="<?= $customer[0]['image'] ?>" alt="User_image" style="height: 200px; width: 200px;"></td>
+                    </tr>
+                    <tr>
+                        <td><h2>  </h2></td>
+                    </tr>
+                    <tr>
                         <td>Customer Name:</td>
                         <td><?=$customer[0]['first_name']." ".$customer[0]['last_name']?></td>
                     </tr>
@@ -177,7 +183,8 @@ if(isset($_SESSION['login']) && $_SESSION == true) {
                     </tr>
                 </table>
                 <div>
-                    <a href="editCustomer.php?id=<?=$customer[0]['id']?>">Edit Customer Information</a>
+                    <a href="editCustomer.php?id=<?=$customer[0]['id']?>">Edit Customer Information</a> ||
+                    <a href="editCustomerImage.php?id=<?=$customer[0]['id']?>">Edit Customer Image</a>
                 </div>
             </div>
         </div>
@@ -185,6 +192,12 @@ if(isset($_SESSION['login']) && $_SESSION == true) {
                 <h2> Nominee Information</h2>
                 <div class="block">
                     <table>
+                        <tr>
+                            <td><img src="<?= $nominee[0]['image'] ?>" alt="User_image" style="height: 200px; width: 200px;"></td>
+                        </tr>
+                        <tr>
+                            <h2>  </h2>
+                        </tr>
                         <tr>
                             <td>Niminee Name:</td>
                             <td><?=$nominee[0]['first_name']." ".$nominee[0]['last_name']?></td>
@@ -219,7 +232,8 @@ if(isset($_SESSION['login']) && $_SESSION == true) {
                         </tr>
                     </table>
                     <div>
-                        <a href="editNominee.php?id=<?=$nominee[0]['id']?>">Edit Nominee Information</a>
+                        <a href="editNominee.php?id=<?=$nominee[0]['id']?>">Edit Nominee Information</a> ||
+                        <a href="editNomineeImage.php?id=<?=$nominee[0]['id']?>">Edit Nominee Image</a>
                     </div>
                 </div>
         </div>
@@ -248,7 +262,12 @@ if(isset($_SESSION['login']) && $_SESSION == true) {
                 <table>
                     <tr>
                         <td>Loan Name:</td>
-                        <td><?=$loan[0]['name']?></td>
+                        <td><?php if(empty($loan[0]['name'])){
+                            echo 'No Assign Loan';
+                            } else{
+                            echo $loan[0]['name'];
+                            }
+                            ?></td>
                     </tr>
                 </table>
             </div>

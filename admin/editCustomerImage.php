@@ -3,9 +3,10 @@ session_start();
 
 if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin') {
     $db = new PDO("mysql:hostname=localhost;dbname=friends_mf", "root", "");
-    $query = "SELECT * FROM `loans` WHERE id=" . $_GET['id'];
+    $query = "SELECT * FROM `customers` WHERE id = " . $_GET['id'] . "";
+//echo $query;
     $stmt = $db->query($query);
-    $loan = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $query = null;
     $db = null;
 } else{
@@ -95,7 +96,6 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin') {
                         <ul class="submenu">
                             <li><a href="allCustomers.php">All Customers</a></li>
                             <li><a href="addCustomer.php">Add Customers</a></li>
-
                         </ul>
                     </li>
 
@@ -120,42 +120,21 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin') {
     <div class="grid_10">
 
         <div class="box round first grid">
-            <h2> Edit Loan</h2>
+            <h2> Customer Image</h2>
             <div class="block">
-                <form action="updateLoan.php" method="post">
-                    <input value="<?=$loan[0]['id']?>" name="id" type="hidden">
-                    <div class="form-group">
-                        <label for="name">Loan Name: </label>
-                        <input class="form-control" type="text" id="name" name="name" value="<?=$loan[0]['name']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">Amount: </label>
-                        <input class="form-control" type="text" id="amount" name="amount" value="<?=$loan[0]['amount']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="interest">Interest: </label>
-                        <input class="form-control" type="text" id="interest" name="interest" value="<?=$loan[0]['interest']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="duration">Duration: </label>
-                        <input class="form-control" type="text" id="duration" name="duration" value="<?=$loan[0]['duration']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="loan_id">Loan ID: </label>
-                        <input class="form-control" type="text" id="loan_id" name="loan_id" value="<?=$loan[0]['loan_id']?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="details">Details: </label>
-                        <input class="form-control" type="text" id="details" name="details" value="<?=$loan[0]['details']?>">
-                    </div>
-                    <button  type="submit" class="btn btn-default">Submit</button>
-                </form>
+                Old Image : <br/>
+                <img src="<?= $customer[0]['image'] ?>" alt="User_image" style="height: 200px; width: 200px;"><br/><br/><br/>
             </div>
+            <form action="updateCustomerImage.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?=$customer[0]['id']?>">
+                <label for="upload">Upload Image</label>
+                <input name="upload" type="file" id="upload">
+                <button  type="submit" class="btn btn-default">Submit</button>
+            </form>
         </div>
     </div>
-</div>
-<div class="clear">
-</div>
+    <div class="clear">
+    </div>
 </div>
 <div class="clear">
 </div>
